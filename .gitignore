@@ -17,4 +17,5 @@ Cargo.lock
 # Added by cargo
 
 /target
-/theme
+/theme/*
+!/theme/example_input.json

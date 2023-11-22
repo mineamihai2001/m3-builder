@@ -6,11 +6,11 @@ use models::M3Theme;
 mod models;
 
 fn parse_args(args: Vec<String>) -> Option<(String, String)> {
-    if args[1] == "--help" {
+    if args.len() > 1 && args[1] == "--help" {
         println!(
             "Options: 
-                --source <path to source file> (default \"theme/in.json\")
-                --target <path to target file> (default \"theme/out.json\")
+                --source <path to source file> (default \"theme/example_input.json\")
+                --target <path to target file> (default \"theme/example_out.json\")
             "
         );
         return None;
@@ -21,8 +21,8 @@ fn parse_args(args: Vec<String>) -> Option<(String, String)> {
         fs::create_dir(dir).expect("Could not create theme directory");
     }
 
-    let mut source = "theme/in.json".to_string();
-    let mut target = "theme/out.json".to_string();
+    let mut source = "theme/example_input.json".to_string();
+    let mut target = "theme/example_out.json".to_string();
 
     let source_arg = match args.iter().position(|r| r == "--source") {
         None => 0,
